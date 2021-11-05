@@ -43,13 +43,13 @@
             }
 
             function getMessage() {
-                $.get('blooming-sierra-67181.herokuapp.com/messages',(data) => {
+                $.get('http://blooming-sierra-67181.herokuapp.com/messages',(data) => {
                     data.forEach(addMessage)
                 })
             }
             
             function postMessage(message) {
-                $.post('blooming-sierra-67181.herokuapp.com/messages', message )
+                $.post('http://blooming-sierra-67181.herokuapp.com/messages', message )
                 location.reload();
             }
         </script>
