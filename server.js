@@ -4,7 +4,7 @@ var app = express()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
 var mongoose = require('mongoose')
-var port = process.env.PORT || 5000
+var port = process.env.PORT
 
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
