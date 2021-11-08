@@ -36,7 +36,7 @@
                 })
                 getMessages()
             })
-       //     socket.on('message',addMessage)
+            socket.on('message',addMessage)
 
             function addMessage(message){
                     $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message}</p>`)
@@ -45,14 +45,12 @@
             function getMessages() {
                 $.get('https://gentle-thicket-99277.herokuapp.com/messages',(data) => {
                     data.forEach(addMessage)
-                    console.log()
                 })
             }
             
             function postMessage(message) {
                 $.post('https://gentle-thicket-99277.herokuapp.com/messages', message )
                 location.reload();
-                console.log()
             }
         </script>
     </body>
