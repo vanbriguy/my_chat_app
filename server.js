@@ -34,9 +34,9 @@ app.get('/messages',(req,res) =>{
 
 app.post('/messages',(req,res) =>{
     var message = new Message(req.body)
-    message.save((err, io) => {
+    message.save((err) => {
         if (err) 
-            sendStatus(status)
+            sendStatus(500)
             io.emit('message',req.body)
             res.sendStatus(200)
     })
