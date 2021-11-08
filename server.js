@@ -25,12 +25,20 @@ var messages = [
     {name: "Jane", message:"Hi"}
 ]
 **/
-
+/*
 app.get('/messages',(req,res) =>{
     Message.find({}, (err,messages) =>  {
         res.send(messages)
     })
 })
+*/
+
+app.get('/messages', checkUserAuth, findApp, renderView, sendJSON);
+
+function checkUserAuth(req, res, next) {
+  if (req.session.user) return next();
+  return next(new NotAuthorizedError());
+}
 
 app.post('/messages',(req,res) =>{
     var message = new Message(req.body)
