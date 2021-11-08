@@ -35,12 +35,10 @@ app.get('/messages',(req,res) =>{
 app.post('/messages',(req,res) =>{
     var message = new Message(req.body)
     message.save((err, io) => {
-        if (err) {
-            sendStatus(500);
-        } else {
+        if (err) 
+//            sendStatus(500)
             io.emit('message',req.body)
             res.sendStatus(200)
-        }
     })
 })
 
