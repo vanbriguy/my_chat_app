@@ -43,14 +43,14 @@
             }
 
             function getMessages() {
-                $.get('https://localhost/messages',(data) => {
+                $.get('/messages',(data) => {
                     data.forEach(addMessage)
                 })
             }
             
             function postMessage(message) {
-                $.post('https://localhost/messages', message )
-//                location.reload();
+                $.post('/messages', message )
+                location.reload();
             }
         </script>
     </body>
