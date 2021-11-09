@@ -16,7 +16,8 @@ var dbUrl = 'mongodb+srv://mca:Passw0rd2021@mongo-node.suans.mongodb.net/mongo-n
 
 var Message = mongoose.model('Message', {
     name: String,
-    message: String 
+    message: String,
+    timestamp: String
 })
 
 /**
@@ -33,15 +34,14 @@ app.get('/messages', cors(), (req,res) =>{
 })
 */
 
-app.get('/messagess', cors(), (req,res) => {
+app.get('/messages', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
-        res.sendStatus(200)
         res.send(messages)
         console.log('messages received successfully')
     })
 })
 
-app.post('/messagess', cors(), (req,res) =>{
+app.post('/messages', cors(), (req,res) =>{
     var message = new Message(req.body)
     message.save((err) => {
 //        if (err) 
@@ -53,7 +53,7 @@ app.post('/messagess', cors(), (req,res) =>{
 })
 
 io.on('connection', (socket) => {
-    console.log('user connected')
+    console.log(' user connected')
 })
 
 mongoose.connect(dbUrl, (err) => {

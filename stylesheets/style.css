@@ -1,0 +1,8 @@
+.container {
+    background-color: darkgrey;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    max-width: 50%;
+}
