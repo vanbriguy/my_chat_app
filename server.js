@@ -7,8 +7,8 @@ var io = require('socket.io')(http)
 var mongoose = require('mongoose')
 var port = process.env.PORT || 5000
 
-app.use(cors())
 app.use(express.static(__dirname))
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
