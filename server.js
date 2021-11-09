@@ -35,6 +35,7 @@ app.get('/messages', cors(), (req,res) =>{
 
 app.get('/messagess', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
+        res.sendStatus(200)
         res.send(messages)
         console.log('messages received successfully')
     })
