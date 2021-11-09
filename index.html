@@ -43,13 +43,13 @@
             }
 
             function getMessages() {
-                $.get('https://gentle-thicket-99277.herokuapp.com/messages',(data) => {
+                $.get('https://localhost/messages',(data) => {
                     data.forEach(addMessage)
                 })
             }
             
             function postMessage(message) {
-                $.post('https://gentle-thicket-99277.herokuapp.com/messages', message )
+                $.post('https://localhost/messages', message )
 //                location.reload();
             }
         </script>
