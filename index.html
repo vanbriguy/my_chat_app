@@ -43,7 +43,7 @@
             }
 
             function getMessages() {
-                $.get('/messages',(data) => {
+                $.get('/messages', (data) => {
                     data.forEach(addMessage)
                 })
             }
