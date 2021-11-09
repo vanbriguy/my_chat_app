@@ -36,6 +36,7 @@ app.get('/messages', cors(), (req,res) =>{
 app.get('/messages', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
         res.send(messages)
+        console.log('messages received successfully')
     })
 })
 
@@ -51,7 +52,7 @@ app.post('/messages', cors(), (req,res) =>{
 })
 
 io.on('connection', (socket) => {
-    console.log(' user connected')
+    console.log('user connected')
 })
 
 mongoose.connect(dbUrl, (err) => {
