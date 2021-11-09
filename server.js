@@ -25,9 +25,16 @@ var messages = [
     {name: "Jane", message:"Hi"}
 ]
 **/
-
+/*
 app.get('/messages', cors(), (req,res) =>{
     Message.find({}, (err,messages) =>  {
+        res.send(messages)
+    })
+})
+*/
+
+app.get('/messages', cors(), (req,res) => {
+    Message.find({}, (err,messages) => {
         res.send(messages)
     })
 })
@@ -39,6 +46,7 @@ app.post('/messages', cors(), (req,res) =>{
  //           sendStatus(500)
             io.emit('message',req.body)
             res.sendStatus(200)
+            console.log('message posted successfully')
     })
 })
 
