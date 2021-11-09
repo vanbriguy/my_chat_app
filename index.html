@@ -43,13 +43,13 @@
             }
 
             function getMessages() {
-                $.get('/messages', (data) => {
+                $.get('/messagess', (data) => {
                     data.forEach(addMessage)
                 })
             }
             
             function postMessage(message) {
-                $.post('/messages', message )
+                $.post('/messagess', message )
                 location.reload();
             }
         </script>

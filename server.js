@@ -33,14 +33,14 @@ app.get('/messages', cors(), (req,res) =>{
 })
 */
 
-app.get('/messages', cors(), (req,res) => {
+app.get('/messagess', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
         res.send(messages)
         console.log('messages received successfully')
     })
 })
 
-app.post('/messages', cors(), (req,res) =>{
+app.post('/messagess', cors(), (req,res) =>{
     var message = new Message(req.body)
     message.save((err) => {
 //        if (err) 
