@@ -46,7 +46,7 @@ app.post('/messagess', cors(), (req,res) =>{
 //        if (err) 
 //          sendStatus(500)
             io.emit('message',req.body)
-//            res.sendStatus(200)
+            res.sendStatus(200)
             console.log('message posted successfully')
     })
 })
