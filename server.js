@@ -44,10 +44,13 @@ app.get('/messages', cors(), (req,res) => {
 app.post('/messages', cors(), (req,res) =>{
     var message = new Message(req.body)
     message.save((err) => {
-        if (err) console.log(err);
-            io.emit('message',req.body)
-            res.sendStatus(200)
-            console.log('message posted successfully');
+        if (err) 
+            console.log(err) 
+            else {
+                io.emit('message',req.body)
+                res.sendStatus(200)
+                console.log('message posted successfully');
+                }
     })
 })
 
