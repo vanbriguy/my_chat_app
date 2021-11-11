@@ -1,3 +1,4 @@
+
 var express = require("express")
 var cors = require('cors')
 var bodyParser = require('body-parser')
@@ -22,20 +23,6 @@ var Message = mongoose.model('Message', {
     timestamp: String
 })
 
-/**
-var messages = [
-    {name: "John", message:"Hello"},
-    {name: "Jane", message:"Hi"}
-]
-**/
-/*
-app.get('/messages', cors(), (req,res) =>{
-    Message.find({}, (err,messages) =>  {
-        res.send(messages)
-    })
-})
-*/
-
 app.get('/messages', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
         res.send(messages)
@@ -55,6 +42,7 @@ app.post('/messages', cors(), (req,res) =>{
                 }
     })
 })
+
 
 io.on('connection', (socket) => {
     console.log(' user connected')
