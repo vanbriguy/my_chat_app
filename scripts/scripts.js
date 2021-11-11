@@ -27,8 +27,8 @@ function postMessage(message) {
 /*
 // Personalized welcome message code
 
-var nameButton = document.querySelector('.userName');
-var myHeading = document.querySelector('.display-4');
+var nameButton = document.querySelector('#userName');
+var myHeading = document.querySelector('#personalGreeting');
 
 $(document).ready(function() {
     function setUserName() {
@@ -43,8 +43,12 @@ if (!localStorage.getItem('name')) {
             setUserName();
             }
     else {
-        var storedName = localStorage.getItem('name');
-        myHeading.textContent = 'Chatterbox = Welcome, ' + storedName;
+        function getUsers() {
+            $.get('/users', (data) => {
+                data.forEach(myHeading.textContent = 'Chatterbox = Welcome, ' + User.find);
+            })
+        }
+        
         }
 
 $(document).ready(function() {        

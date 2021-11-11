@@ -23,19 +23,28 @@ var Message = mongoose.model('Message', {
     timestamp: String
 })
 /*
-var Users = mongoose.model('User', {
+var User = mongoose.model('User', {
     name: String,
     password: String,
     timestamp: String
 })
 */
+//get messages from mongodb
 app.get('/messages', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
         res.send(messages)
         console.log('messages received successfully')
     })
 })
-
+/*
+//get users from mongodb
+app.get('/users', cors(), (req,res) => {
+    User.find({}, (err,users) => {
+        res.send(users)
+        console.log('users received successfully')
+    })
+})
+*/
 app.post('/messages', cors(), (req,res) =>{
     var message = new Message(req.body)
     message.save((err) => {
