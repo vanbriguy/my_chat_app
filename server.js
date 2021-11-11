@@ -23,6 +23,12 @@ var Message = mongoose.model('Message', {
     timestamp: String
 })
 
+var Users = mongoose.model('User', {
+    name: String,
+    password: String,
+    timestamp: String
+})
+
 app.get('/messages', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
         res.send(messages)
