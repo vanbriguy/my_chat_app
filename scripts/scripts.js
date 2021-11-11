@@ -15,13 +15,13 @@ function addMessage(message){
 }
 
 function getMessages() {
-    $.get('http://chat.vanbriguy.ca/messages', (data) => {
+    $.get('/messages', (data) => {
         data.forEach(addMessage)
     })
 }
 
 function postMessage(message) {
-    $.post('http://chat.vanbriguy.ca/messages', message )
+    $.post('/messages', message )
     location.reload();
 }
 /*
