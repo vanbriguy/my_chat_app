@@ -1,9 +1,9 @@
 /* global document,window,localStorage */
 
 var socket = io()
-$(()=> {
+$(() => {
     $("#send").click(() => {
-        var message = {name: $("#name").val(), message: $("#message").val(), timestamp: new Date()}
+        var message = {name: $('#yourName').text(), message: $("#message").val(), timestamp: new Date()}
         postMessage(message)
     })
     getMessages()
@@ -11,7 +11,7 @@ $(()=> {
 socket.on('message',addMessage)
 
 function addMessage(message){
-        $("#messages").append(`<h4> Name: ${message.name} </h4> <p> Message: ${message.message}</p> <p> Time: ${message.timestamp} </p>`)
+        $("#messages").append(`<h4> From: ${message.name} </h4> <p> Message: ${message.message}</p> <p> Time: ${message.timestamp} </p><hr>`)
 }
 
 function getMessages() {
@@ -24,38 +24,29 @@ function postMessage(message) {
     $.post('/messages', message )
     location.reload();
 }
-/*
-// Personalized welcome message code
 
-var nameButton = document.querySelector('#userName');
-var myHeading = document.querySelector('#personalGreeting');
+// user login code
 
-$(document).ready(function() {
-    function setUserName() {
-        'use strict'
-        var myName = window.prompt('Please enter your name.');
-        localStorage.setItem('name', myName);
-        myHeading.textContent = 'Have a nice day, ' + myName;
-        }
-    })
+function setUserName() {
+    var myName = window.prompt('Please enter your name');
+    localStorage.setItem('name', myName);
+    location.reload();
+ //   $("#personalGreeting").append(`: Welcome, ${myName}`);
+    }
 
-if (!localStorage.getItem('name')) {
-            setUserName();
-            }
-    else {
-        function getUsers() {
-            $.get('/users', (data) => {
-                data.forEach(myHeading.textContent = 'Chatterbox = Welcome, ' + User.find);
-            })
-        }
-        
-        }
+$(() => {
+    $("#userName").click(() => {
+        setUserName()
+        })
+})
 
-$(document).ready(function() {        
-    nameButton.onclick = function () {
-        'use strict'
+$(() => {
+    if (!localStorage.getItem('name')) {
         setUserName();
-        console.log('button clicked');
-        };
-    })
-*/
+        } else {
+            var storedName = localStorage.getItem('name');
+            $("#personalGreeting").append(`: Welcome, ${storedName}`)
+            $("#yourName").append(`${storedName}`)
+            }
+})
+

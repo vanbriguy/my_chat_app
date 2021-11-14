@@ -5,11 +5,25 @@
 .container {
     background-color: darkgrey;
     border-radius: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 25%;
     margin-right: 25%;
-    max-width: 50%;
+    max-width: 40%;
     padding-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+}
+
+#messages {
+    overflow:scroll; 
+    max-height:400px;
+    margin-top:15px;
+    padding: 10px;
+    border-radius:10px;
+    background-color:whitesmoke;
 }
 
 @media only screen and (max-width: 600px) {
