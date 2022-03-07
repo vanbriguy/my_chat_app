@@ -60,7 +60,7 @@ app.post('/messages', cors(), (req,res) =>{
 
 
 io.on('connection', (socket) => {
-    console.log(' user connected')
+    console.log('user connected')
 })
 
 mongoose.connect(dbUrl, (err) => {
