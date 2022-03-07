@@ -26,7 +26,6 @@ function postMessage(message) {
 }
 
 // user login code
-
 function setUserName() {
     var myName = window.prompt('Please enter your name');
     localStorage.setItem('name', myName);
