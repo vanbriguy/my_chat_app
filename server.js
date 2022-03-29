@@ -63,7 +63,7 @@ app.post('/messages', cors(), (req,res) =>{
             else {
                 io.emit('message',req.body)
                 res.sendStatus(200)
-                console.log('message posted successfully');
+                console.log(`message "${message.message}" posted successfully`);
                 }
     })
 })
@@ -78,7 +78,7 @@ app.post('/users', cors(), (req,res) =>{
             else {
                 io.emit('user',req.body)
                 res.sendStatus(200)
-                console.log('user posted successfully');
+                console.log(`user "${user.name}" posted successfully`);
                 }
     })
 })
