@@ -39,7 +39,7 @@ var User = mongoose.model('User', {
 app.get('/messages', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
         res.send(messages)
-        console.log('messages received successfully')
+        console.log(`${Date()}: messages received successfully`)
     })
 })
 
@@ -49,7 +49,7 @@ app.get('/messages', cors(), (req,res) => {
 app.get('/users', cors(), (req,res) => {
     User.find({}, (err,users) => {
         res.send(users)
-        console.log('users received successfully')
+        console.log(`${Date()}: users received successfully`)
     })
 })
 
@@ -63,7 +63,7 @@ app.post('/messages', cors(), (req,res) =>{
             else {
                 io.emit('message',req.body)
                 res.sendStatus(200)
-                console.log(`message "${message.message}" posted successfully`);
+                console.log(`${Date()}: message "${message.message}" posted successfully`);
                 }
     })
 })
@@ -78,21 +78,21 @@ app.post('/users', cors(), (req,res) =>{
             else {
                 io.emit('user',req.body)
                 res.sendStatus(200)
-                console.log(`user "${user.name}" posted successfully`);
+                console.log(`${Date()}: user "${user.name}" posted successfully`);
                 }
     })
 })
 
 
 io.on('connection', (socket) => {
-    console.log('user connected')
+    console.log(`${Date()}: user connected`)
 })
 
 mongoose.connect(dbUrl, (err) => {
-    console.log('mongodb connection successful')
+    console.log(`${Date()}: mongodb connection successful`)
 })
 
 var server = http.listen(port, () => {
-    console.log("Server is listening on port %d", port )
+    console.log(`${Date()}: Server is listening on port ${port}` )
 })
 

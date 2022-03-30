@@ -77,6 +77,7 @@ var socket = io()
                 var storedName = localStorage.getItem('name');
                 $("#personalGreeting").append(`: Welcome, <b> ${storedName} </b>`)
                 $("#yourName").append(`${storedName}`)
+                console.log(`${Date()}: "${storedName}" stored successfully`)
                 }
     })
 
