@@ -28,7 +28,6 @@ var Message = mongoose.model('Message', {
 
 
 //User model for mongodb
-
 var User = mongoose.model('User', {
     name: String,
     timestamp: String
@@ -45,7 +44,6 @@ app.get('/messages', cors(), (req,res) => {
 
 
 //get users from mongodb
-
 app.get('/users', cors(), (req,res) => {
     User.find({}, (err,users) => {
         res.send(users)
@@ -69,7 +67,6 @@ app.post('/messages', cors(), (req,res) =>{
 })
 
 //post users to mongodb
-
 app.post('/users', cors(), (req,res) =>{
     var user = new User(req.body)
     user.save((err) => {

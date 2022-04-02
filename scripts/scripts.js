@@ -18,7 +18,7 @@ var socket = io()
 
     function getMessages() {
         $.get('/messages', (data) => {
-            data.forEach(addMessage)
+            data.reverse().forEach(addMessage)
         })
     }
 
@@ -75,7 +75,7 @@ var socket = io()
             setUserName();
             } else {
                 var storedName = localStorage.getItem('name');
-                $("#personalGreeting").append(`: Welcome, <b> ${storedName} </b>`)
+                $("#personalGreeting").append(`: Welcome, <br><b> ${storedName} </b>`)
                 $("#yourName").append(`${storedName}`)
                 console.log(`${Date()}: "${storedName}" stored successfully`)
                 }
