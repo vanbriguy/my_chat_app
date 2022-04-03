@@ -75,7 +75,7 @@ var socket = io()
             setUserName();
             } else {
                 var storedName = localStorage.getItem('name');
-                $("#personalGreeting").append(`: Welcome, <br><b> ${storedName} </b>`)
+                $("#personalGreeting").append(`Welcome, <b> ${storedName} </b>`)
                 $("#yourName").append(`${storedName}`)
                 console.log(`${Date()}: "${storedName}" stored successfully`)
                 }

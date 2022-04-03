@@ -17,6 +17,23 @@
     height:50px;
 }
 
+#logo {
+    background-image: URL('/assets/chatterboxlogo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:80px;
+    width:40%;
+    position: relative;
+    margin-left:0%;
+
+}
+
+#userNameText {
+    margin-left:90%;
+    position: relative;
+    text-align: left;
+    min-width:100vmin;
+}
 .container {
     background-color: darkgrey;
     border-radius: 15px;
