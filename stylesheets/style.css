@@ -25,14 +25,15 @@
     width:40%;
     position: relative;
     margin-left:0%;
+    margin-bottom:4%;
 
 }
 
 #userNameText {
-    margin-left:90%;
+    margin-left:35vmin;
     position: relative;
     text-align: left;
-    min-width:100vmin;
+    min-width:50vmin;
 }
 .container {
     background-color: darkgrey;
@@ -44,6 +45,10 @@
     padding-bottom: 1%;
     position:relative;
     min-height:90vmin;
+}
+
+h1 {
+    font-size:5vmin
 }
 
 h2 {
@@ -86,5 +91,5 @@ h3 {
     padding: 1%;
     border-radius:10px;
     background-color:whitesmoke;
-}
+    }
 }
