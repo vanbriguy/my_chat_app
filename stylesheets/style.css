@@ -1,6 +1,6 @@
 body {
     background-image: URL("/assets/city_background.jpg");
-    background-size:cover;
+    background-size:auto;
 }
 
 * {
