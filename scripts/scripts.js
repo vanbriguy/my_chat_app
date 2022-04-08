@@ -54,10 +54,45 @@ var socket = io()
         $.post('/users', user )
         location.reload();
     }
-    
+
+//trigger add,get,post psw
+var storedPassword = localStorage.getItem('password');
+
+$(() => {
+    $("#send").click(() => {
+        var password = {name: $("#yourPassword").text(), timestamp: new Date()}
+        postPassword(password)
+    })
+    getPasswords()
+})
+socket.on('password',addPassword)
 
 
-// user login
+function addPassword(password){
+    $("#yourPassword").append(`Password: ${storedPassword} `)
+}
+
+function getPasswords() {
+    $.get('/passwords', (data) => {
+        data.forEach(addPassword)
+    })
+}
+
+function postPassword(password) {
+    $.post('/passwords', password )
+    location.reload();
+}    
+
+//simple password check
+    function enterPassword() {
+        var myPassword = window.prompt('Please enter the chat password');
+        localStorage.setItem('password', myPassword);
+        $("#yourPassword").append(`${storedPassword}`);
+        console.log(`${Date()}: "${storedPassword}" stored successfully`);
+        location.reload();
+        }
+
+// create, change username
     function setUserName() {
         var myName = window.prompt('Please enter your name');
         localStorage.setItem('name', myName);
@@ -72,6 +107,7 @@ var socket = io()
 
     $(() => {
         if (!localStorage.getItem('name')) {
+            enterPassword();
             setUserName();
             } else {
                 var storedName = localStorage.getItem('name');

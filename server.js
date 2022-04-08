@@ -33,6 +33,12 @@ var User = mongoose.model('User', {
     timestamp: String
 })
 
+//Password model for mongodb
+var Password = mongoose.model('Password', {
+    name: String,
+    timestamp: String
+})
+
 
 //get messages from mongodb
 app.get('/messages', cors(), (req,res) => {
@@ -48,6 +54,14 @@ app.get('/users', cors(), (req,res) => {
     User.find({}, (err,users) => {
         res.send(users)
         console.log(`${Date()}: users received successfully`)
+    })
+})
+
+//get password from mongodb
+app.get('/passwords', cors(), (req,res) => {
+    Password.find({}, (err,passwords) => {
+        res.send(passwords)
+        console.log(`${Date()}: passwords received successfully`)
     })
 })
 
@@ -80,6 +94,19 @@ app.post('/users', cors(), (req,res) =>{
     })
 })
 
+//post passwords to mongodb
+app.post('/passwords', cors(), (req,res) =>{
+    var password = new Password(req.body)
+    password.save((err) => {
+        if (err) 
+            console.log(err) 
+            else {
+                io.emit('password',req.body)
+                res.sendStatus(200)
+                console.log(`${Date()}: password "${password.name}" posted successfully`);
+                }
+    })
+})
 
 io.on('connection', (socket) => {
     console.log(`${Date()}: user connected`)
