@@ -100,7 +100,7 @@ var getStoredPasswordAnswer = JSON.parse(localStorage.getItem('psw_answr'));
 var getStoredPassword = JSON.parse(localStorage.getItem('password'));
 
 
-    var enterPassword = function() {
+    enterPassword = function() {
 
         var myPassword = window.prompt('Please enter the chat password');
         localStorage.setItem('psw_answr', JSON.stringify(myPassword));
@@ -111,9 +111,11 @@ var getStoredPassword = JSON.parse(localStorage.getItem('password'));
     //    if (getStoredPasswordAnswer === getStoredPassword) {
         if (JSON.parse(localStorage.getItem('psw_answr')) === JSON.parse(localStorage.getItem('password'))) {
             alert('correct password, thank you');
-            location.reload();
+            console.log(`${Date()}: "${getStoredPasswordAnswer}" correct password entered`);
+            //location.reload();
             } else {
                 alert('Incorrect password, please try again');
+                console.log(`${Date()}: "${getStoredPasswordAnswer}" incorrect password entered`);
                 document.body.innerHTML = "";
 
                 };
@@ -146,9 +148,9 @@ function setUserName() {
                 $("#personalGreeting").append(`Welcome, <b> ${storedName} </b>`)
                 $("#yourName").append(`${storedName}`)
                 console.log(`${Date()}: "${storedName}" stored successfully`)
-                var getStoredPassword = JSON.parse(localStorage.getItem('password'));
-                $("#yourPassword").append(`${getStoredPassword}`);
-                console.log(`${Date()}: "${getStoredPassword}" stored successfully`);
+                //var getStoredPassword = JSON.parse(localStorage.getItem('password'));
+                //$("#yourPassword").append(`${getStoredPassword}`);
+                console.log(`${Date()}: "${getStoredPasswordAnswer}" stored successfully`);
                 }
     })
 
