@@ -100,7 +100,7 @@ var getStoredPasswordAnswer = JSON.parse(localStorage.getItem('psw_answr'));
 var getStoredPassword = JSON.parse(localStorage.getItem('password'));
 
 
-    enterPassword = function() {
+    var enterPassword = function() {
 
         var myPassword = window.prompt('Please enter the chat password');
         localStorage.setItem('psw_answr', JSON.stringify(myPassword));
@@ -119,7 +119,7 @@ var getStoredPassword = JSON.parse(localStorage.getItem('password'));
                 document.body.innerHTML = "";
 
                 };
-    };
+    }
     
 
 // create, change username
@@ -140,7 +140,7 @@ function setUserName() {
     $(() => {
         if (!localStorage.getItem('name')) {
             getPasswords();
-            setTimeout(enterPassword(),2000); 
+            enterPassword(); 
             setUserName();
             //passwordCheck();
             } else {
