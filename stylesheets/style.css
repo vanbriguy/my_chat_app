@@ -41,8 +41,9 @@ body {
     min-width:50vmin;
 }
 .container {
-    background: linear-gradient(45deg, rgb(0, 36, 30, 0.5) 0%, rgb(9, 121, 78, 0.5) 35%, rgb(0, 255, 76, 0.5) 100%);
+    background: linear-gradient(45deg, rgb(0, 36, 30, 0.25) 0%, rgb(9, 121, 78, 0.25) 35%, rgb(0, 255, 76, 0.25) 100%);
     border-radius: 15px;
+    border-style:none;
     margin-top: 1%;
     margin-left: 25%;
     margin-right: 25%;
@@ -80,7 +81,6 @@ h3 {
 
 @media only screen and (max-width: 800px) {
     .container {
-        background-color: darkgrey;
         border-radius: 10px;
         margin-top: 1%;
         margin-left: 2.5%;

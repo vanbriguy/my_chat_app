@@ -57,7 +57,7 @@ app.get('/users', cors(), (req,res) => {
     })
 })
 
-//get password from mongodb
+//get passwords from mongodb
 app.get('/passwords', cors(), (req,res) => {
     Password.find({}, (err,passwords) => {
         res.send(passwords)
