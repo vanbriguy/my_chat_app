@@ -12,11 +12,20 @@ var socket = io()
     })
     socket.on('message',addMessage)
 
+    
     function addMessage(message){
         if (JSON.parse(localStorage.getItem('psw_answr')) === JSON.parse(localStorage.getItem('password'))) {
         $("#messages").append(`<h4> From: ${message.name} </h4> <p> Message: ${message.message}</p> <p> Time: ${message.timestamp} </p><hr>`)
-        } else enterPassword();
+        } else 
+            enterPassword();
+     //       setUserName();
     }
+    
+    /*
+    function addMessage(message){
+        $("#messages").append(`<h4> From: ${message.name} </h4> <p> Message: ${message.message}</p> <p> Time: ${message.timestamp} </p><hr>`)
+        };
+    */
 
     function getMessages() {
         $.get('/messages', (data) => {
@@ -71,7 +80,8 @@ var socket = io()
 
     $(() => {
         getPasswords()
-    })
+    });
+
     socket.on('password',addPassword);
 
 
@@ -79,13 +89,13 @@ var socket = io()
        // $("#yourPassword").replaceWith(`<h3 id="yourPassword">${password.name}</h3>`).text();
         localStorage.setItem('password', JSON.stringify(password.name));
         
-    }
+    };
 
     function getPasswords() {
         $.get('/passwords', (data) => {
             data.forEach(addPassword)
         })
-    }
+    };
 
     /**
     function postPassword(password) {
@@ -112,15 +122,15 @@ var getStoredPassword = JSON.parse(localStorage.getItem('password'));
         if (JSON.parse(localStorage.getItem('psw_answr')) === JSON.parse(localStorage.getItem('password'))) {
             alert('correct password, thank you');
             console.log(`${Date()}: "${getStoredPasswordAnswer}" correct password entered`);
-            //location.reload();
             } else {
                 alert('Incorrect password, please try again');
                 console.log(`${Date()}: "${getStoredPasswordAnswer}" incorrect password entered`);
                 document.body.innerHTML = "";
+                enterPassword;
 
                 };
-    }
-    
+    };
+
 
 // create, change username
 function setUserName() {
@@ -129,28 +139,28 @@ function setUserName() {
         location.reload();
         }
 
-    $(() => {
-        $("#userName").click(() => {
-            setUserName()
-            })
-    })
+$(() => {
+    $("#userName").click(() => {
+        setUserName()
+        })
+});
 
  
 
-    $(() => {
-        if (!localStorage.getItem('name')) {
-            getPasswords();
-            enterPassword(); 
-            setUserName();
-            //passwordCheck();
-            } else {
-                var storedName = localStorage.getItem('name');
-                $("#personalGreeting").append(`Welcome, <b> ${storedName} </b>`)
-                $("#yourName").append(`${storedName}`)
-                console.log(`${Date()}: "${storedName}" stored successfully`)
-                //var getStoredPassword = JSON.parse(localStorage.getItem('password'));
-                //$("#yourPassword").append(`${getStoredPassword}`);
-                console.log(`${Date()}: "${getStoredPasswordAnswer}" stored successfully`);
-                }
-    })
+$(() => {
+    if (!localStorage.getItem('name')) {
+        getPasswords();
+        enterPassword(); 
+        //setUserName();
+        //passwordCheck();
+        } else {
+            var storedName = localStorage.getItem('name');
+            $("#personalGreeting").append(`Welcome, <b> ${storedName} </b>`);
+            $("#yourName").append(`${storedName}`);
+            console.log(`${Date()}: "${storedName}" stored successfully`);
+            //var getStoredPassword = JSON.parse(localStorage.getItem('password'));
+            //$("#yourPassword").append(`${getStoredPassword}`);
+            console.log(`${Date()}: "${getStoredPasswordAnswer}" stored successfully`);
+            }
+});
 
