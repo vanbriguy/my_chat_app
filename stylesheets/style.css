@@ -66,6 +66,11 @@ body {
     width: 57vmin;
 
 }
+
+#message {
+    margin-top:7vmin;
+}
+
 .container {
     background: linear-gradient(45deg, rgb(0, 36, 30, 0.25) 0%, rgb(9, 121, 78, 0.25) 35%, rgb(0, 255, 76, 0.25) 100%);
     border-radius: 20px 0px 20px 0px;
