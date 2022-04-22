@@ -7,6 +7,16 @@ hr {
     border-radius: 4px;
 }
 
+button {
+    border-radius: 20px 0px 20px 0px;
+    border-width:5px;
+    border-style:solid;
+    color:rgb(0, 39, 39);
+    font-weight: 800;
+    height:5vmin;
+    width:20vmin;
+}
+
 body {
     background-image: URL("/assets/city_background.jpg");
     background-size: cover;
@@ -47,17 +57,25 @@ body {
     margin-left:40vmin;
     position: relative;
     text-align: left;
-    min-width:50vmin;
+    border:2px;
+    border-style: solid;
+    border-radius: 20px 0px 20px 0px;
+    padding-top:0%;
+    padding-left:3%;
+    height: 17.5vmin;
+    width: 57vmin;
+
 }
 .container {
     background: linear-gradient(45deg, rgb(0, 36, 30, 0.25) 0%, rgb(9, 121, 78, 0.25) 35%, rgb(0, 255, 76, 0.25) 100%);
-    border-radius: 15px;
+    border-radius: 20px 0px 20px 0px;
     border-style:none;
     margin-top: 1%;
     margin-left: 25%;
     margin-right: 25%;
     max-width: 50%;
     padding-bottom: 1%;
+    padding-right:1vmin;
     position:relative;
     min-height:90vmin;
 }
@@ -97,13 +115,24 @@ h3 {
         margin-left: 2.5%;
         margin-right: 2.5%;
         max-width: 95%;
-  }
+    }
 
-  #messages {
-    overflow:scroll; 
-    max-height:70vmin;
-    margin-top:2%;
-    padding: 1%;
+    #messages {
+        overflow:scroll; 
+        max-height:70vmin;
+        margin-top:2%;
+        padding: 1%;
+    }
+
+    button {
+        border-radius: 20px 0px 20px 0px;
+        border-width:5px;
+        border-style:solid;
+        color:rgb(0, 39, 39);
+        font-weight: 800;
+        height:5vmin;
+        width:25vmin;
+        font-size:50%;
     }
 }
 

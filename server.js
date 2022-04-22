@@ -116,4 +116,3 @@ mongoose.connect(dbUrl, (err) => {
 var server = http.listen(port, () => {
     console.log(`${Date()}: Server is listening on port ${port}` )
 })
-
