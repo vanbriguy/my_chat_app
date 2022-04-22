@@ -2,14 +2,12 @@
 
 var socket = io()
 
-//-- get, add, post messages
-    
+//-- get, add, post messages  
     function addMessage(message){
         if (JSON.parse(localStorage.getItem('psw_answr')) === JSON.parse(localStorage.getItem('password'))) {
         $("#messages").append(`<h4> From: ${message.name} </h4> <p> Message: ${message.message}</p> <p> Time: ${message.timestamp} </p><hr>`)
         } else 
             enterPassword();
-            //setUserName();
     }
     
     function getMessages() {
@@ -23,9 +21,7 @@ var socket = io()
         location.reload();
     }
 
-
 //-- add, get, post user
-    
     function addUser(user){
         $("#yourName").append(`User: ${storedName} `)
     }
@@ -42,7 +38,6 @@ var socket = io()
     }
 
 //-- add, get, post psw
-
     $(() => {
         getPasswords();
         addPassword();
@@ -70,32 +65,27 @@ var socket = io()
     **/  
 
 //-- simple password check
-
     var getStoredPasswordAnswer = JSON.parse(localStorage.getItem('psw_answr'));
     var getStoredPassword = JSON.parse(localStorage.getItem('password'));
 
-
     function enterPassword () {
-
         var myPassword = window.prompt('Please enter the chat password');
         localStorage.setItem('psw_answr', JSON.stringify(myPassword));
         setTimeout(passwordCheck(),1000);
+        location.reload();
     };
 
     function passwordCheck() {
         if (JSON.parse(localStorage.getItem('psw_answr')) === JSON.parse(localStorage.getItem('password'))) {
             alert('correct password, thank you');
             console.log(`${Date()}: "${getStoredPasswordAnswer}" correct password entered`);
-            setUserName();
             } else {
-                alert('Incorrect password, please try again');
+    //            alert('Incorrect password, please try again');
                 console.log(`${Date()}: "${getStoredPasswordAnswer}" incorrect password entered`);
                 document.body.innerHTML = "";
                 enterPassword;
                 };
         }
-
-
 
 //-- Set, change username
     function setUserName() {
@@ -133,37 +123,9 @@ var socket = io()
     })
     socket.on('message',addMessage)
     socket.on('user',addUser)
-  
 
     $(() => {
         $("#userName").click(() => {
             setUserName()
             })
     });
-
- /**   
-    $(() => {
-        $("#send").click(() => {
-            var message = {name: $('#yourName').text(), message: $("#message").val(), timestamp: new Date()}
-            postMessage(message)
-        })
-        getMessages()
-    })
-    socket.on('message',addMessage)
-
-
-    $(() => {
-        $("#send").click(() => {
-            var user = {name: $('#yourName').text(), timestamp: new Date()}
-            postUser(user)
-        })
-        getUsers()
-    })
-    socket.on('user',addUser)
-
-    $(() => {
-        $("#userName").click(() => {
-            setUserName()
-            })
-    });
-**/

@@ -19,28 +19,27 @@ var dbUrl = 'mongodb+srv://mca:Passw0rd2021@mongo-node.suans.mongodb.net/mongo-n
 
 //fixie:KMDtBYBwMO92Zng@speedway.usefixie.com:1080
 
-//Message model for mongodb
+//-- Message model for mongodb
 var Message = mongoose.model('Message', {
     name: String,
     message: String,
     timestamp: String
 })
 
-
-//User model for mongodb
+//-- User model for mongodb
 var User = mongoose.model('User', {
     name: String,
     timestamp: String
 })
 
-//Password model for mongodb
+//-- Password model for mongodb
 var Password = mongoose.model('Password', {
     name: String,
     timestamp: String
 })
 
 
-//get messages from mongodb
+//-- get messages from mongodb
 app.get('/messages', cors(), (req,res) => {
     Message.find({}, (err,messages) => {
         res.send(messages)
@@ -48,8 +47,7 @@ app.get('/messages', cors(), (req,res) => {
     })
 })
 
-
-//get users from mongodb
+//-- get users from mongodb
 app.get('/users', cors(), (req,res) => {
     User.find({}, (err,users) => {
         res.send(users)
@@ -57,7 +55,7 @@ app.get('/users', cors(), (req,res) => {
     })
 })
 
-//get passwords from mongodb
+//-- get passwords from mongodb
 app.get('/passwords', cors(), (req,res) => {
     Password.find({}, (err,passwords) => {
         res.send(passwords)
@@ -65,8 +63,7 @@ app.get('/passwords', cors(), (req,res) => {
     })
 })
 
-
-//post messages to mongodb
+//-- post messages to mongodb
 app.post('/messages', cors(), (req,res) =>{
     var message = new Message(req.body)
     message.save((err) => {
@@ -80,7 +77,7 @@ app.post('/messages', cors(), (req,res) =>{
     })
 })
 
-//post users to mongodb
+//-- post users to mongodb
 app.post('/users', cors(), (req,res) =>{
     var user = new User(req.body)
     user.save((err) => {
@@ -94,7 +91,7 @@ app.post('/users', cors(), (req,res) =>{
     })
 })
 
-//post passwords to mongodb
+//-- post passwords to mongodb
 app.post('/passwords', cors(), (req,res) =>{
     var password = new Password(req.body)
     password.save((err) => {
