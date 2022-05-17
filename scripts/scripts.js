@@ -72,7 +72,7 @@ socket.on('password',addPassword);
     function enterPassword () {
         var myPassword = window.prompt('Please enter the chat password');
         localStorage.setItem('psw_answr', JSON.stringify(myPassword));
-        setTimeout(() => {passwordCheck()},500);
+        setTimeout(() => {passwordCheck()},1000);
     };
 
     function passwordCheck() {
@@ -97,7 +97,7 @@ socket.on('password',addPassword);
     };
     
 
-//-- SET, CHANGE USERNAME
+//-- SET, UPDATE USERNAME
     function setUserName() {
         var myName = window.prompt('Please enter your name');
         localStorage.setItem('name', myName);
