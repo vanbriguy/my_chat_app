@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
 
-var dbUrl = 'mongodb+srv://mca:Passw0rd2021@mongo-node.suans.mongodb.net/mongo-node?retryWrites=true&w=majority'
+var dbUrl = 'mongodb+srv://mca:YA6BoMryaqEHy6G2@mongo-node.suans.mongodb.net/mongo-node?retryWrites=true&w=majority'
 
 //fixie:KMDtBYBwMO92Zng@speedway.usefixie.com:1080
 
