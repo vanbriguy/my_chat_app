@@ -27,7 +27,7 @@ socket.on('password',addPassword);
 
 //-- ADD, GET, POST USER
     function addUser(user){
-        $("#yourName").append(`User: ${storedName} `)
+        $("#yourName").append(`User: ${storedName}`)
     }
 
     function getUsers() {

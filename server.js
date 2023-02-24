@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
 
 var dbUrl = 'mongodb+srv://mca:YA6BoMryaqEHy6G2@mongo-node.suans.mongodb.net/mongo-node?retryWrites=true&w=majority'
+//'mongodb+srv://mca:YA6BoMryaqEHy6G2@mongo-node.suans.mongodb.net/?retryWrites=true&w=majority'
 
 //fixie:KMDtBYBwMO92Zng@speedway.usefixie.com:1080
 
@@ -41,7 +42,7 @@ var Password = mongoose.model('Password', {
 
 //-- get messages from mongodb
 app.get('/messages', cors(), (req,res) => {
-    Message.find({}, (err,messages) => {
+    Message.find({}, (error,messages) => {
         res.send(messages)
         console.log(`${Date()}: messages received successfully`)
     })
@@ -49,7 +50,7 @@ app.get('/messages', cors(), (req,res) => {
 
 //-- get users from mongodb
 app.get('/users', cors(), (req,res) => {
-    User.find({}, (err,users) => {
+    User.find({}, (error,users) => {
         res.send(users)
         console.log(`${Date()}: users received successfully`)
     })
@@ -57,18 +58,18 @@ app.get('/users', cors(), (req,res) => {
 
 //-- get passwords from mongodb
 app.get('/passwords', cors(), (req,res) => {
-    Password.find({}, (err,passwords) => {
+    Password.find({}, (error,passwords) => {
         res.send(passwords)
         console.log(`${Date()}: passwords received successfully`)
     })
 })
 
 //-- post messages to mongodb
-app.post('/messages', cors(), (req,res) =>{
+app.post('/messages', (req,res) =>{
     var message = new Message(req.body)
-    message.save((err) => {
-        if (err) 
-            console.log(err) 
+    message.save((error) => {
+        if (error) 
+            console.log(error)
             else {
                 io.emit('message',req.body)
                 res.sendStatus(200)
@@ -80,9 +81,9 @@ app.post('/messages', cors(), (req,res) =>{
 //-- post users to mongodb
 app.post('/users', cors(), (req,res) =>{
     var user = new User(req.body)
-    user.save((err) => {
-        if (err) 
-            console.log(err) 
+    user.save((error) => {
+        if (error) 
+            console.log(error) 
             else {
                 io.emit('user',req.body)
                 res.sendStatus(200)
@@ -94,9 +95,9 @@ app.post('/users', cors(), (req,res) =>{
 //-- post passwords to mongodb
 app.post('/passwords', cors(), (req,res) =>{
     var password = new Password(req.body)
-    password.save((err) => {
-        if (err) 
-            console.log(err) 
+    password.save((error) => {
+        if (error) 
+            console.log(error) 
             else {
                 io.emit('password',req.body)
                 res.sendStatus(200)
@@ -109,7 +110,7 @@ io.on('connection', (socket) => {
     console.log(`${Date()}: user connected`)
 })
 
-mongoose.connect(dbUrl, (err) => {
+mongoose.connect(dbUrl, (error) => {
     console.log(`${Date()}: mongodb connection successful`)
 })
 
