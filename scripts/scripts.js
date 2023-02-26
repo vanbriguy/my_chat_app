@@ -2,6 +2,13 @@
 
 var socket = io()
 
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function (socket) {
+  var address = socket.handshake.address;
+  console.log('New connection from ' + address.address + ':' + address.port);
+});
+
 socket.on('message',addMessage);
 socket.on('user',addUser);
 socket.on('password',addPassword);

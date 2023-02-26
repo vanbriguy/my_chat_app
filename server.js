@@ -6,7 +6,9 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
+const { kMaxLength } = require("buffer");
 var port = process.env.PORT || 5000;
+
 
 
 app.use(express.static(__dirname));
@@ -67,6 +69,7 @@ app.get('/passwords', cors(), (req,res) => {
 //-- post messages to mongodb
 app.post('/messages', (req,res) =>{
     var message = new Message(req.body)
+    message.markModified('mixed')
     message.save((error) => {
         if (error) 
             console.log(error)
@@ -107,11 +110,11 @@ app.post('/passwords', cors(), (req,res) =>{
 })
 
 io.on('connection', (socket) => {
-    console.log(`${Date()}: user connected`)
+    console.log(`${Date()}: ${socket.request.connection.remoteAddress} user connected`)
 })
 
 mongoose.connect(dbUrl, (error) => {
-    console.log(`${Date()}: mongodb connection successful`)
+    console.log(`${Date()}: "${dbUrl.slice}" mongodb connection successful`)
 })
 
 var server = http.listen(port, () => {
