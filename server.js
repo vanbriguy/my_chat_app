@@ -9,8 +9,6 @@ var mongoose = require('mongoose');
 const { kMaxLength } = require("buffer");
 var port = process.env.PORT || 5000;
 
-
-
 app.use(express.static(__dirname));
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,6 +19,18 @@ var dbUrl = 'mongodb+srv://mca:YA6BoMryaqEHy6G2@mongo-node.suans.mongodb.net/mon
 //'mongodb+srv://mca:YA6BoMryaqEHy6G2@mongo-node.suans.mongodb.net/?retryWrites=true&w=majority'
 
 //fixie:KMDtBYBwMO92Zng@speedway.usefixie.com:1080
+
+// get the Console class
+const { Console } = require("console");
+// get fs module for creating write streams
+const fs = require("fs");
+
+
+// make a new logger
+const myLogger = new Console({
+    stdout: fs.createWriteStream("./Logs/normalStdout.txt"),
+    stderr: fs.createWriteStream("./Logs/errStdErr.txt"),
+  });
 
 //-- Message model for mongodb
 var Message = mongoose.model('Message', {
@@ -44,25 +54,25 @@ var Password = mongoose.model('Password', {
 
 //-- get messages from mongodb
 app.get('/messages', cors(), (req,res) => {
-    Message.find({}, (error,messages) => {
+    Message.find({}, (err,messages) => {
         res.send(messages)
-        console.log(`${Date()}: messages received successfully`)
+        myLogger.log(`${Date()}: messages received successfully`)
     })
 })
 
 //-- get users from mongodb
 app.get('/users', cors(), (req,res) => {
-    User.find({}, (error,users) => {
+    User.find({}, (err,users) => {
         res.send(users)
-        console.log(`${Date()}: users received successfully`)
+        myLogger.log(`${Date()}: users received successfully`)
     })
 })
 
 //-- get passwords from mongodb
 app.get('/passwords', cors(), (req,res) => {
-    Password.find({}, (error,passwords) => {
+    Password.find({}, (err,passwords) => {
         res.send(passwords)
-        console.log(`${Date()}: passwords received successfully`)
+        myLogger.log(`${Date()}: passwords received successfully`)
     })
 })
 
@@ -70,13 +80,13 @@ app.get('/passwords', cors(), (req,res) => {
 app.post('/messages', (req,res) =>{
     var message = new Message(req.body)
     message.markModified('mixed')
-    message.save((error) => {
-        if (error) 
-            console.log(error)
+    message.save((err) => {
+        if (err) 
+            myLogger.error('err');
             else {
                 io.emit('message',req.body)
                 res.sendStatus(200)
-                console.log(`${Date()}: message "${message.message}" posted successfully`);
+                myLogger.log(`${Date()}: message "${message.message}" posted successfully`);
                 }
     })
 })
@@ -84,13 +94,13 @@ app.post('/messages', (req,res) =>{
 //-- post users to mongodb
 app.post('/users', cors(), (req,res) =>{
     var user = new User(req.body)
-    user.save((error) => {
-        if (error) 
-            console.log(error) 
+    user.save((err) => {
+        if (err) 
+            myLogger.log(err) 
             else {
                 io.emit('user',req.body)
                 res.sendStatus(200)
-                console.log(`${Date()}: user "${user.name}" posted successfully`);
+                myLogger.log(`${Date()}: user "${user.name}" posted successfully`);
                 }
     })
 })
@@ -98,25 +108,25 @@ app.post('/users', cors(), (req,res) =>{
 //-- post passwords to mongodb
 app.post('/passwords', cors(), (req,res) =>{
     var password = new Password(req.body)
-    password.save((error) => {
-        if (error) 
-            console.log(error) 
+    password.save((err) => {
+        if (err) 
+            myLogger.log(err) 
             else {
                 io.emit('password',req.body)
                 res.sendStatus(200)
-                console.log(`${Date()}: password "${password.name}" posted successfully`);
+                myLogger.log(`${Date()}: password "${password.name}" posted successfully`);
                 }
     })
 })
 
 io.on('connection', (socket) => {
-    console.log(`${Date()}: ${socket.request.connection.remoteAddress} user connected`)
+    myLogger.log(`${Date()}: "${socket.request.connection.remoteAddress}" user connected`)
 })
 
-mongoose.connect(dbUrl, (error) => {
-    console.log(`${Date()}: "${dbUrl.slice}" mongodb connection successful`)
+mongoose.connect(dbUrl, (err) => {
+    myLogger.log(`${Date()}: user connected to mongodb successfuly`)
 })
 
 var server = http.listen(port, () => {
-    console.log(`${Date()}: Server is listening on port ${port}` )
+    myLogger.log(`${Date()}: Server is listening on port ${port}` )
 })

@@ -1,0 +1,14 @@
+Sat Apr 22 2023 09:13:17 GMT-0700 (Pacific Daylight Saving Time): Server is listening on port 5000
+Sat Apr 22 2023 09:13:18 GMT-0700 (Pacific Daylight Saving Time): user connected to mongodb successfuly
+Sat Apr 22 2023 09:13:19 GMT-0700 (Pacific Daylight Saving Time): "::1" user connected
+Sat Apr 22 2023 09:13:36 GMT-0700 (Pacific Daylight Saving Time): "::1" user connected
+Sat Apr 22 2023 09:13:36 GMT-0700 (Pacific Daylight Saving Time): passwords received successfully
+Sat Apr 22 2023 09:13:36 GMT-0700 (Pacific Daylight Saving Time): messages received successfully
+Sat Apr 22 2023 09:13:36 GMT-0700 (Pacific Daylight Saving Time): users received successfully
+Sat Apr 22 2023 09:13:48 GMT-0700 (Pacific Daylight Saving Time): "::1" user connected
+Sat Apr 22 2023 09:13:48 GMT-0700 (Pacific Daylight Saving Time): user "Brian localhost" posted successfully
+Sat Apr 22 2023 09:13:48 GMT-0700 (Pacific Daylight Saving Time): message "what a great day for logging" posted successfully
+Sat Apr 22 2023 09:13:48 GMT-0700 (Pacific Daylight Saving Time): passwords received successfully
+Sat Apr 22 2023 09:13:48 GMT-0700 (Pacific Daylight Saving Time): users received successfully
+Sat Apr 22 2023 09:13:48 GMT-0700 (Pacific Daylight Saving Time): messages received successfully
+Sat Apr 22 2023 09:14:34 GMT-0700 (Pacific Daylight Saving Time): "::1" user connected
